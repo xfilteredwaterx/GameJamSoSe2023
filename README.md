@@ -2,4 +2,4 @@
 Das Projekt für unseren GameJam
 
 Teammitglieder:
-Shaina Milde
+Shaina Milde, Christian Scherzer
