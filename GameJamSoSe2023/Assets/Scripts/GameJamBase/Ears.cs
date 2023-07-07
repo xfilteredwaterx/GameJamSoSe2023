@@ -19,6 +19,8 @@ public class Ears : Sense
     private void OnDrawGizmos()
     {
         directionToPlayer = target.transform.position - transform.position;
+#if Unity_Editor
         SenseGizmos.DrawRangeDisc(transform.position, transform.up, range);
+#endif
     }
 }

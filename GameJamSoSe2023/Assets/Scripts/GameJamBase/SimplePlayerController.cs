@@ -28,10 +28,12 @@ public class SimplePlayerController : MonoBehaviour
 
     // Walk Particles
     public MMF_Player walkFeedback;
+    public MMF_Player jumpFeedback;
 
     private Animator anim;
     private int speedParameterHash;
     private int isWalkingParameterHash;
+    private int isAttackingParamterHash;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,11 +42,14 @@ public class SimplePlayerController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         speedParameterHash = Animator.StringToHash("speed");
         isWalkingParameterHash = Animator.StringToHash("isMoving");
+        isAttackingParamterHash = Animator.StringToHash("isAttacking");
     }
 
     // Update is called once per frame
     void Update()
     {
+        HandleAttack();
+        HandleJump();
         // Stores inputs
         float verticalInput = Input.GetAxis("Vertical");
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -91,18 +96,17 @@ public class SimplePlayerController : MonoBehaviour
         {
             if (walkFeedback.IsPlaying)
             {
-                walkFeedback.StopFeedbacks();
+                walkFeedback?.StopFeedbacks();
             }
         }
 
-
+        movementDirection *= speed;
         // Calculate gravity
-        ySpeed = IsGrounded() ? ySpeed = 0 : ySpeed += Physics.gravity.y * gravityMultiplier * Time.deltaTime;
         movementDirection.y = ySpeed;
 
 
         // Move the character        
-        characterController.Move(movementDirection * speed * maxMovementSpeed * Time.deltaTime);
+        characterController.Move(movementDirection  * maxMovementSpeed * Time.deltaTime);
     }
 
     /// <summary>
@@ -132,5 +136,22 @@ public class SimplePlayerController : MonoBehaviour
 
         // Set animaotr speed parameter with damping (moves the character via root motion)
         anim.SetFloat(speedParameterHash, speed, 0, Time.deltaTime);
+    }
+
+    private void HandleAttack()
+    {
+        anim.SetBool(isAttackingParamterHash, Input.GetMouseButton(0));
+    }
+
+    private void HandleJump()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
+            jumpFeedback.PlayFeedbacks();
+            ySpeed = 2;
+        }
+        ySpeed = IsGrounded() && ySpeed <= 0.2f ? ySpeed = 0 : ySpeed += Physics.gravity.y * gravityMultiplier * Time.deltaTime;
+       
+
     }
 }
