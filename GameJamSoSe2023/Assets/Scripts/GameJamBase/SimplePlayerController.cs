@@ -28,6 +28,8 @@ public class SimplePlayerController : MonoBehaviour
 
     public ControllScheme controllScheme;
 
+    public Transform hoseOrigin;
+
     // Walk Particles
     public MMF_Player walkFeedback;
     public MMF_Player jumpFeedback;
@@ -106,6 +108,11 @@ public class SimplePlayerController : MonoBehaviour
             }
         }
 
+        if(interactionManager.isInteracting && interactionManager.interactionTarget.GetComponent<Interactable_Hose>()!= null&& Vector3.Distance(hoseOrigin.position,transform.position) > 12 )
+        {
+            movementDirection = (hoseOrigin.position- transform.position).normalized;
+        }
+
         movementDirection *= speed;
         // Calculate gravity
         movementDirection.y = ySpeed;
@@ -146,7 +153,7 @@ public class SimplePlayerController : MonoBehaviour
 
     private void HandleAttack()
     {
-        anim.SetBool(isAttackingParamterHash, controllScheme.Interact());
+        //anim.SetBool(isAttackingParamterHash, controllScheme.Interact());
     }
 
     private void HandleJump()
@@ -163,9 +170,18 @@ public class SimplePlayerController : MonoBehaviour
 
     private void HandleInteraction()
     {
-        if(controllScheme.Interact() && interactionManager.canInteract)
+        if (controllScheme.Interact() && interactionManager.canInteract)
         {
-            interactionManager.interactionTarget.Interact(interactionManager);
+
+            if(interactionManager.isInteracting)
+            {
+                interactionManager.interactionTarget.AlternateInteract(interactionManager);
+            }
+            else
+            {
+                interactionManager.interactionTarget.Interact(interactionManager);
+            }
+
         }
     }
 }
