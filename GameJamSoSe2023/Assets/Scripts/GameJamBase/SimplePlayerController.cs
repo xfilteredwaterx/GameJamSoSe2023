@@ -36,7 +36,7 @@ public class SimplePlayerController : MonoBehaviour
 
     private InteractionManager interactionManager;
 
-    private Animator anim;
+    public Animator anim;
     private int speedParameterHash;
     private int isWalkingParameterHash;
     private int isAttackingParamterHash;
@@ -58,6 +58,7 @@ public class SimplePlayerController : MonoBehaviour
         HandleAttack();
         HandleJump();
         HandleInteraction();
+        HandleUseage();
         // Stores inputs
         float verticalInput = controllScheme.Vertical();
         float horizontalInput = controllScheme.Horizontal();
@@ -182,6 +183,14 @@ public class SimplePlayerController : MonoBehaviour
                 interactionManager.interactionTarget.Interact(interactionManager);
             }
 
+        }
+    }
+
+    private void HandleUseage()
+    {
+        if(controllScheme.Use() && interactionManager.isInteracting)
+        {
+            interactionManager.Use();
         }
     }
 }
