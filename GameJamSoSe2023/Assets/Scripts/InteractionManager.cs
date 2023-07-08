@@ -25,6 +25,7 @@ public class InteractionManager : MonoBehaviour
     {
         if(isInteracting)
         {
+            interactionText.transform.position = new Vector3(0, 10000, 0);
             return;
         }
         if(interactables.Count > 0)
