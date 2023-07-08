@@ -53,6 +53,7 @@ public class VacuumWire : MonoBehaviour
 	{
 		points[0] = pathInfo.origin.position;
 		points[points.Length - 1] = pathInfo.target.position;
+
 		for (int i = 0; i < points.Length; i++)
 		{
 			bool pinned = (i == 0 && pinStart) || (i == points.Length - 1 && pinEnd);
