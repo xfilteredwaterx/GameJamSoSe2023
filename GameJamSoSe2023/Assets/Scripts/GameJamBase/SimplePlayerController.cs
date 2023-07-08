@@ -26,6 +26,8 @@ public class SimplePlayerController : MonoBehaviour
     // How fast the charakter moves to the ground (gravity speed)
     private float ySpeed;
 
+    public ControllScheme controllScheme;
+
     // Walk Particles
     public MMF_Player walkFeedback;
     public MMF_Player jumpFeedback;
@@ -51,8 +53,8 @@ public class SimplePlayerController : MonoBehaviour
         HandleAttack();
         HandleJump();
         // Stores inputs
-        float verticalInput = Input.GetAxis("Vertical");
-        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = controllScheme.Vertical();
+        float horizontalInput = controllScheme.Horizontal();
 
         // Create Vector from inputs
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
@@ -132,7 +134,7 @@ public class SimplePlayerController : MonoBehaviour
     private void Animations(float speed,float inputMagnitude)
     {
         // Set animator isWalking parameter depending on input
-        anim.SetBool(isWalkingParameterHash, inputMagnitude > 0);
+        //anim.SetBool(isWalkingParameterHash, inputMagnitude > 0);
 
         // Set animaotr speed parameter with damping (moves the character via root motion)
         anim.SetFloat(speedParameterHash, speed, 0, Time.deltaTime);
@@ -140,7 +142,7 @@ public class SimplePlayerController : MonoBehaviour
 
     private void HandleAttack()
     {
-        anim.SetBool(isAttackingParamterHash, Input.GetMouseButton(0));
+        anim.SetBool(isAttackingParamterHash, controllScheme.Interact());
     }
 
     private void HandleJump()
