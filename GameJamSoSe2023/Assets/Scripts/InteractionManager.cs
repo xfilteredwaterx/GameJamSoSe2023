@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ public class InteractionManager : MonoBehaviour
     {
         if(isInteracting)
         {
+            interactionText.transform.position = new Vector3(0, 10000, 0);
             return;
         }
         if(interactables.Count > 0)
@@ -45,5 +47,10 @@ public class InteractionManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Use()
+    {
+        interactionTarget.Use(this);
     }
 }

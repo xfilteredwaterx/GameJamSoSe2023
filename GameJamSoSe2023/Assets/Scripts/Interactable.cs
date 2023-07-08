@@ -8,4 +8,6 @@ public abstract class Interactable : MonoBehaviour
     public abstract void Interact(InteractionManager interactor);
 
     public abstract void AlternateInteract(InteractionManager interactor);
+
+    public abstract void Use(InteractionManager interactor);
 }
