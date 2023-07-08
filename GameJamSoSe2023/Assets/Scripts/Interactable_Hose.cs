@@ -6,7 +6,8 @@ using UnityEngine;
 public class Interactable_Hose : Interactable
 {
     public MMF_Player feedback;
-   
+    private SimplePlayerController spc;
+    public float knockBackStrength = 2;
     public override void AlternateInteract(InteractionManager interactor)
     {
         transform.parent = null;
@@ -25,6 +26,7 @@ public class Interactable_Hose : Interactable
         transform.localPosition = Vector3.zero;
         currentInteractor = interactor;
         currentInteractor.isInteracting = true;
+        spc = currentInteractor.GetComponent<SimplePlayerController>();
     }
 
     public override void Use(InteractionManager interactor)
@@ -34,11 +36,21 @@ public class Interactable_Hose : Interactable
         {
             feedback?.PlayFeedbacks();
         }
+        PushBackTheUser();
         Invoke("StopFeedback",0.1f);
     }
 
     private void StopFeedback()
     {
         feedback?.StopFeedbacks();
+    }
+
+    public void PushBackTheUser()
+    {
+        
+        spc.knockBack = -spc.transform.forward  * knockBackStrength * Time.deltaTime;
+        Vector3 rndSphere = Random.onUnitSphere;
+        rndSphere.y = 0;
+        spc.knockBackRotation = rndSphere;
     }
 }

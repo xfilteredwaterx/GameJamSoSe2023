@@ -27,7 +27,7 @@ public class NPCIdleState : BaseState
 
         if(npcController.CanSeePlayer ||npcController.CanHeraPlayer)
         {
-            npcController.SwitchToState(npcController.FleeState);
+            npcController.SwitchToState(npcController.ChaseState);
         }
         Debug.Log("Idle");
     }

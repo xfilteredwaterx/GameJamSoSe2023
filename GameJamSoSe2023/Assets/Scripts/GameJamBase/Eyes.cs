@@ -15,7 +15,8 @@ public class Eyes : Sense
     // Update is called once per frame
     void Update()
     {
-        directionToPlayer = target.transform.position - referenceTransform.position;
+        SetTarget();
+        directionToPlayer = Target.transform.position - referenceTransform.position;
         IsDetecting = IsInRange() && IsInFoV() && HasLoS();
     }
 
@@ -39,7 +40,7 @@ public class Eyes : Sense
         RaycastHit rc;
         if(Physics.Raycast(referenceTransform.position, directionToPlayer, out rc, range, layermask))
         {
-            return rc.collider.gameObject.Equals(target);
+            return rc.collider.gameObject.Equals(Target);
         }
         else
         {
@@ -48,14 +49,14 @@ public class Eyes : Sense
          
     }
 
-#if UNITY_ENGINE
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        directionToPlayer = target.transform.position - referenceTransform.position;
+        directionToPlayer = GameObject.Find("Player").transform.position - referenceTransform.position;
         SenseGizmos.DrawRangeCircle(referenceTransform.position, transform.up, range);
         SenseGizmos.DrawFOV(referenceTransform.position, referenceTransform.forward, transform.up, range, fov);
         if(IsInRange())
-            SenseGizmos.DrawRay(referenceTransform.position, target.transform.position, HasLoS());
+            SenseGizmos.DrawRay(referenceTransform.position, Target.transform.position, HasLoS());
     }
 #endif
 }

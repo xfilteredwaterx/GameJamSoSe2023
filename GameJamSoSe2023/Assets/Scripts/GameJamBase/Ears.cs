@@ -12,13 +12,14 @@ public class Ears : Sense
     // Update is called once per frame
     void Update()
     {
-        directionToPlayer = target.transform.position - transform.position;
-        IsDetecting = IsInRange() && target.GetComponent<Audible>() != null;
+        SetTarget();
+        directionToPlayer = Target.transform.position - transform.position;
+        IsDetecting = IsInRange() && Target.GetComponent<Audible>() != null;
     }
 
     private void OnDrawGizmos()
     {
-        directionToPlayer = target.transform.position - transform.position;
+        //directionToPlayer = Target.transform.position - transform.position;
 #if Unity_Editor
         SenseGizmos.DrawRangeDisc(transform.position, transform.up, range);
 #endif

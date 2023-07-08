@@ -40,6 +40,9 @@ public class SimplePlayerController : MonoBehaviour
     private int speedParameterHash;
     private int isWalkingParameterHash;
     private int isAttackingParamterHash;
+
+    public Vector3 knockBack;
+    public Vector3 knockBackRotation;
     // Start is called before the first frame update
     void Start()
     {
@@ -91,15 +94,16 @@ public class SimplePlayerController : MonoBehaviour
             * movementDirection;
         
         // Rotate the character to movement direction
-        if (movementDirection != Vector3.zero)
+        if (movementDirection != Vector3.zero || knockBack != Vector3.zero)
         {
             if(!walkFeedback.IsPlaying)
             {
                 walkFeedback?.PlayFeedbacks();
             }
 
-            Quaternion targetCharacterRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetCharacterRotation, rotationSpeed * Time.deltaTime);
+            Quaternion targetCharacterRotation = Quaternion.LookRotation(movementDirection + knockBackRotation, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetCharacterRotation , rotationSpeed * Time.deltaTime);
+            knockBackRotation = Vector3.zero;
         }
         else
         {
@@ -112,15 +116,20 @@ public class SimplePlayerController : MonoBehaviour
         if(interactionManager.isInteracting && interactionManager.interactionTarget.GetComponent<Interactable_Hose>()!= null&& Vector3.Distance(hoseOrigin.position,transform.position) > 12 )
         {
             movementDirection = (hoseOrigin.position- transform.position).normalized;
+            knockBack = Vector3.zero;
         }
-
+        if(knockBack != Vector3.zero)
+        {
+            speed *= 0.4f;
+        }
         movementDirection *= speed;
         // Calculate gravity
         movementDirection.y = ySpeed;
 
 
         // Move the character        
-        characterController.Move(movementDirection  * maxMovementSpeed * Time.deltaTime);
+        characterController.Move(movementDirection  * maxMovementSpeed * Time.deltaTime + knockBack);
+        knockBack = Vector3.zero;
     }
 
     /// <summary>

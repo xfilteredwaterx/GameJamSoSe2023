@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class BaseStateMachine : MonoBehaviour
 {
     [SerializeField] public BaseState CurrentState { get; protected set; }
+    // For Debuging
+    public string currentStateName;
 
     private void Start()
     {
@@ -15,6 +17,7 @@ public abstract class BaseStateMachine : MonoBehaviour
     private void Update()
     {
         CurrentState?.OnUpdateState(this);
+        currentStateName = CurrentState.GetType().ToString();
         Tick();
     }
 

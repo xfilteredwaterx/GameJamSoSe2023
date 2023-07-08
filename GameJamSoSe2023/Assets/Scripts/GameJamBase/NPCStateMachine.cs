@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class NPCStateMachine : BaseStateMachine
 {
     public NPCIdleState IdleState;
-    public NPCFleeState FleeState;
+    public NPCChaseState ChaseState;
     public NPCPatrolState PatrolState;
 
     private float initalAgentSpeed;
@@ -42,6 +42,6 @@ public class NPCStateMachine : BaseStateMachine
         anim.SetFloat("speed", agent.velocity.magnitude);
     }
 
-    public Vector3 PlayerPosition { get => eyes.target.transform.position; }
+    public Vector3 PlayerPosition { get => eyes.Target.transform.position; }
 
 }

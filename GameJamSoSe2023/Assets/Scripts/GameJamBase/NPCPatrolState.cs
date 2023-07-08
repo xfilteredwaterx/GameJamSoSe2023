@@ -34,6 +34,10 @@ public class NPCPatrolState : BaseState
             targetPosition = GetNextWaypoint();
             npcController.SwitchToState(npcController.IdleState);
         }
+        if (npcController.CanSeePlayer || npcController.CanHeraPlayer)
+        {
+            npcController.SwitchToState(npcController.ChaseState);
+        }
     }
 
     private Vector3 GetNextWaypoint()
