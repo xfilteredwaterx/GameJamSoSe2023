@@ -32,6 +32,8 @@ public class SimplePlayerController : MonoBehaviour
     public MMF_Player walkFeedback;
     public MMF_Player jumpFeedback;
 
+    private InteractionManager interactionManager;
+
     private Animator anim;
     private int speedParameterHash;
     private int isWalkingParameterHash;
@@ -45,6 +47,7 @@ public class SimplePlayerController : MonoBehaviour
         speedParameterHash = Animator.StringToHash("speed");
         isWalkingParameterHash = Animator.StringToHash("isMoving");
         isAttackingParamterHash = Animator.StringToHash("isAttacking");
+        interactionManager = GetComponent<InteractionManager>();
     }
 
     // Update is called once per frame
@@ -52,6 +55,7 @@ public class SimplePlayerController : MonoBehaviour
     {
         HandleAttack();
         HandleJump();
+        HandleInteraction();
         // Stores inputs
         float verticalInput = controllScheme.Vertical();
         float horizontalInput = controllScheme.Horizontal();
@@ -155,5 +159,13 @@ public class SimplePlayerController : MonoBehaviour
         ySpeed = IsGrounded() && ySpeed <= 0.2f ? ySpeed = 0 : ySpeed += Physics.gravity.y * gravityMultiplier * Time.deltaTime;
        
 
+    }
+
+    private void HandleInteraction()
+    {
+        if(controllScheme.Interact() && interactionManager.canInteract)
+        {
+            interactionManager.interactionTarget.Interact(interactionManager);
+        }
     }
 }
