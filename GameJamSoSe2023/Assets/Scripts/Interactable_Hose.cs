@@ -5,14 +5,22 @@ using UnityEngine;
 
 public class Interactable_Hose : Interactable
 {
+    public Transform hoseOrigin;
     public MMF_Player feedback;
     private SimplePlayerController spc;
     public float knockBackStrength = 2;
+    private Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     public override void AlternateInteract(InteractionManager interactor)
     {
         transform.parent = null;
         currentInteractor.isInteracting = false;
         currentInteractor = null;
+        rb.isKinematic = false;
     }
 
     public override void Interact(InteractionManager interactor)
@@ -27,6 +35,25 @@ public class Interactable_Hose : Interactable
         currentInteractor = interactor;
         currentInteractor.isInteracting = true;
         spc = currentInteractor.GetComponent<SimplePlayerController>();
+        rb.isKinematic = true;
+    }
+
+    private void Update()
+    {
+        if (Vector3.Distance(hoseOrigin.position, transform.position) > 10 && currentInteractor == null)
+        {
+            Vector3 movementDirection = (hoseOrigin.position - transform.position).normalized;
+            movementDirection.y = 0;
+            if(transform.position.y < -5) // Make sure you cant lose the hose cuz it glitches out
+            {
+                transform.position = new Vector3(transform.position.x, 5, transform.position.z);
+            }
+            rb.velocity = movementDirection * 10;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
 
     public override void Use(InteractionManager interactor)

@@ -12,6 +12,7 @@ public class VacuumWire : MonoBehaviour
 	public float meshThickness = 1;
 	public MeshFilter meshFilter;
 	public int cylinderResolution = 5;
+	public float maxLength = 10;
 
 	float pathLength;
 	float pointSpacing;
@@ -52,6 +53,7 @@ public class VacuumWire : MonoBehaviour
 	void FixedUpdate()
 	{
 		points[0] = pathInfo.origin.position;
+
 		points[points.Length - 1] = pathInfo.target.position;
 
 		for (int i = 0; i < points.Length; i++)
