@@ -1,9 +1,12 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable_Hose : Interactable
 {
+    public MMF_Player feedback;
+   
     public override void AlternateInteract(InteractionManager interactor)
     {
         transform.parent = null;
@@ -26,6 +29,16 @@ public class Interactable_Hose : Interactable
 
     public override void Use(InteractionManager interactor)
     {
-        throw new System.NotImplementedException();
+        CancelInvoke();
+        if(!feedback.IsPlaying)
+        {
+            feedback?.PlayFeedbacks();
+        }
+        Invoke("StopFeedback",0.1f);
+    }
+
+    private void StopFeedback()
+    {
+        feedback?.StopFeedbacks();
     }
 }
