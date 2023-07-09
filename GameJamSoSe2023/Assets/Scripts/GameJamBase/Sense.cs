@@ -9,12 +9,12 @@ using System.Linq;
 public abstract class Sense : MonoBehaviour
 {
     public bool IsDetecting { get; protected set; }
-    public SimplePlayerController Target { get => target; set => target = value; }
+    public BurningObject Target { get => target; set => target = value; }
 
     // = Player
-    private SimplePlayerController target;
+    public BurningObject target;
 
-    public SimplePlayerController[] targets;
+    public BurningObject[] targets;
 
     public float range = 3;
 
@@ -22,12 +22,26 @@ public abstract class Sense : MonoBehaviour
 
     private void Awake()
     {
-        targets = GameObject.FindObjectsOfType<SimplePlayerController>();
+        List<BurningObject> bos = GameObject.FindObjectsOfType<BurningObject>().ToList();
+        bos.RemoveAll(obj => obj.isEnemy);
+        targets = bos.ToArray();
+        
     }
 
-    public void SetTarget()
+    public bool SetTarget()
     {
-        Target = targets.OrderBy(obj => Vector3.Distance(obj.transform.position, transform.position)).First();
+        foreach(BurningObject bo in targets.OrderBy(obj => Vector3.Distance(obj.transform.position, transform.position)))
+        {
+            if (bo.Hp <= 0)
+            {
+                Debug.Log(bo.name);
+                Target = bo;
+                return true;
+            }
+        }
+
+
+        return false;
     }
     public bool IsInRange()
     {

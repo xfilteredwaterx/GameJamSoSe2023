@@ -9,9 +9,18 @@ public class BurningObject : MonoBehaviour
     public MMF_Player endFeedback;
     public MMF_Player damageFeedback;
     public ParticleSystem fire;
+    public bool isEnemy = false;
+    private int maxHP = 0;
+
     private void Start()
     {
         fire.Play();
+        maxHP = hp;
+        if(!isEnemy && Random.value < 0.5f)
+        {
+            fire.Stop();
+            hp = 0;
+        }
     }
     public int Hp { get => hp;
         set 
@@ -23,8 +32,15 @@ public class BurningObject : MonoBehaviour
                 print("Test");
                 endFeedback.PlayFeedbacks();
                 fire.Stop();
+                GameManager.instance.Score += maxHP;
             }
 
         } 
+    }
+
+    public void Ignite()
+    {
+        hp = maxHP;
+        fire.Play();
     }
 }
