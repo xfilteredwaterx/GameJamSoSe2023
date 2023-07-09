@@ -25,15 +25,15 @@ public class BurningObject : MonoBehaviour
     public int Hp { get => hp;
         set 
         {
-            hp = value;
             damageFeedback.PlayFeedbacks();
-            if (hp <= 0)
+            if (value <= 0 && hp > 0)
             {
                 print("Test");
                 endFeedback.PlayFeedbacks();
                 fire.Stop();
                 GameManager.instance.Score += maxHP;
             }
+            hp = value;
 
         } 
     }

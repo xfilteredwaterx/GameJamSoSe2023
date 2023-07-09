@@ -58,7 +58,7 @@ public class NPCStateMachine : BaseStateMachine
 
     private void OnDestroy()
     {
-        demonSpawner.enemyCount -= 1;
+        demonSpawner!.enemyCount -= 1;
     }
 
 }
