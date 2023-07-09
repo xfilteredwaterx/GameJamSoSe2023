@@ -13,7 +13,6 @@ public class NPCChaseState : BaseState
         NPCStateMachine statemachine = (NPCStateMachine)bsm;
         Vector3 fleeDestination = statemachine.PlayerPosition;
         statemachine.SetDestination(fleeDestination);
-        Debug.Log(fleeDestination);
     }
 
 

@@ -7,24 +7,24 @@ using UnityEngine;
 public class NPCKnockBackState : BaseState
 {
     public Vector3 knockBackDirection;
-    public float knockbackTime;
-    private float knockBackStrength = 0;
-    private float timer;
+    public float knockbackTime = 10;
+    private float knockBackStrength = 24;
+    public float timer;
 
     public override void OnEnterState(BaseStateMachine bsm)
     {
-        timer = Time.time + knockbackTime;
+
     }
 
     public override void OnUpdateState(BaseStateMachine bsm)
     {
         NPCStateMachine npcController = bsm as NPCStateMachine;
 
-        bsm.transform.Translate(knockBackDirection * knockBackStrength * Time.deltaTime);
-
+        bsm.transform.Translate(knockBackDirection * knockBackStrength * Time.deltaTime,Space.World);
+        Debug.Log(timer);
         if(timer < Time.time)
         {
-            npcController.SwitchToState(npcController.IdleState);
+           npcController.SwitchToState(npcController.IdleState);
         }
     }
 }

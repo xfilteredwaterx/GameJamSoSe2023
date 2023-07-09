@@ -49,7 +49,7 @@ public class NPCStateMachine : BaseStateMachine
     public void ApplyKnockback(Vector3 normalized, float v)
     {
         KnockBackState.knockBackDirection = normalized;
-        KnockBackState.knockbackTime = v;
+        KnockBackState.timer = Time.time +v;
         CurrentState = KnockBackState;
     }
 

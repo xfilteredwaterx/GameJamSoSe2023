@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DamageTrigger : MonoBehaviour
 {
+    public Transform soruce;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +18,11 @@ public class DamageTrigger : MonoBehaviour
         {
             other.GetComponent<Destuctible>().Hp -= 1;
         }
-        if(other.GetComponent<NPC>() != null)
+
+        if (other.GetComponent<NPCStateMachine>() != null)
         {
-            other.GetComponent<NPCStateMachine>().ApplyKnockback((transform.position - other.transform.position).normalized, 0.7f);
+            print(other.gameObject.name);
+            other.GetComponent<NPCStateMachine>().ApplyKnockback((soruce.forward).normalized, 0.2f);
         }
     }
 }
