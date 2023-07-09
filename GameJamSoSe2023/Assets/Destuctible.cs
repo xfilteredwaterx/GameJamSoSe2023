@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Destuctible : MonoBehaviour
 {
-    private int hp = 3;
+    public int hp = 3;
     public MMF_Player feedback;
     public MMF_Player damageFeedback;
     public int Hp { get => hp; 
