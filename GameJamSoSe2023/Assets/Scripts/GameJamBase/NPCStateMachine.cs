@@ -11,6 +11,7 @@ public class NPCStateMachine : BaseStateMachine
     public NPCKnockBackState KnockBackState;
     private float initalAgentSpeed;
     private Animator anim;
+    public DemonSpawner demonSpawner;
 
     private Eyes eyes;
     private Ears ears;
@@ -54,5 +55,10 @@ public class NPCStateMachine : BaseStateMachine
     }
 
     public Vector3 PlayerPosition { get => eyes.Target.transform.position; }
+
+    private void OnDestroy()
+    {
+        demonSpawner.enemyCount -= 1;
+    }
 
 }
