@@ -58,8 +58,9 @@ public class SimplePlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleInteraction();
-        if (interactionManager.isInteracting && interactionManager.interactionTarget.GetComponent<Interactable_Cart>())
+        HandleInteraction(); 
+        HandleUseage();
+        if (interactionManager.isInteracting && (interactionManager.isInteracting && interactionManager.interactionTarget.GetComponent<Interactable_Cart>() || interactionManager.interactionTarget.GetComponent<Interactable_Pump>() != null))
         {
             return;
         }
@@ -67,7 +68,7 @@ public class SimplePlayerController : MonoBehaviour
         HandleAttack();
         HandleJump();
 
-        HandleUseage();
+
         // Stores inputs
         float verticalInput = controllScheme.Vertical();
         float horizontalInput = controllScheme.Horizontal();
@@ -119,7 +120,7 @@ public class SimplePlayerController : MonoBehaviour
             }
         }
 
-        if(interactionManager.isInteracting && interactionManager.interactionTarget.GetComponent<Interactable_Hose>()!= null&& Vector3.Distance(hoseOrigin.position,transform.position) > 10 )
+        if(interactionManager.isInteracting && interactionManager.interactionTarget.GetComponent<Interactable_Hose>()!= null && Vector3.Distance(hoseOrigin.position,transform.position) > 10 )
         {
             movementDirection = (hoseOrigin.position- transform.position).normalized;
             knockBack = Vector3.zero;

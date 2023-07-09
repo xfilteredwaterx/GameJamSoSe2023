@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class InteractionManager : MonoBehaviour
 
     public bool canInteract;
     public Interactable interactionTarget;
-    public GameObject interactionText;
+    public TextMeshProUGUI interactionText;
     private Camera mainCamera;
 
     public bool isInteracting = false;
@@ -37,6 +38,9 @@ public class InteractionManager : MonoBehaviour
                     canInteract = true;
                     interactionTarget = interactable;
                     interactionText.transform.position = mainCamera.WorldToScreenPoint(interactable.transform.position);
+                    print(interactionTarget.interactionMessage);
+                    interactionText.text = interactionTarget.interactionMessage;
+
                     return;
                 }
                 else

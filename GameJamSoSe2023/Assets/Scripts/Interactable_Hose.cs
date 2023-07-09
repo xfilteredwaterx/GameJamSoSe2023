@@ -95,8 +95,26 @@ public class Interactable_Hose : Interactable
 
     public float HosePressure { get => hosePressure; set 
         {
-            waterBar.UpdateBar01(hosePressure / 100);
-            hosePressure = value; 
+            if(value <= maxHosePressure)
+            {
+                if (value > hosePressure)
+                {
+                    waterBar.SetBar01(hosePressure / 100);
+                }
+                else
+                {
+                    waterBar.UpdateBar01(hosePressure / 100);
+
+                }
+                hosePressure = value;
+
+            }
+            else
+            {
+                hosePressure = maxHosePressure;
+                waterBar.SetBar01(hosePressure / 100);
+            }
+
         } 
     }
 }

@@ -13,6 +13,7 @@ public class ControllScheme
     public string use;
 
     public bool interactPressed = false;
+    public bool usePressed = false;
 
     public float Horizontal()
     {
@@ -31,7 +32,26 @@ public class ControllScheme
 
     public bool Use()
     {
+        if (usePressed && Input.GetAxis(use) <= 0)
+        {
+            usePressed = false;
+        }
         return Input.GetAxis(use) > 0;
+
+    }
+
+    public bool UseButtonDown()
+    {
+        if (!usePressed && Input.GetAxis(use) > 0)
+        {
+            usePressed = true;
+            return true;
+        }
+        if (usePressed && Input.GetAxis(use) <= 0)
+        {
+            usePressed = false;
+        }
+        return false;
     }
     public bool Interact()
     {
