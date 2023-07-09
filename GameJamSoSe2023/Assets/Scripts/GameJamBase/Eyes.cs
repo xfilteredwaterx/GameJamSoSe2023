@@ -15,9 +15,11 @@ public class Eyes : Sense
     // Update is called once per frame
     void Update()
     {
-        SetTarget();
-        directionToPlayer = Target.transform.position - referenceTransform.position;
-        IsDetecting = IsInRange() && IsInFoV() && HasLoS();
+        if(SetTarget())
+        {
+            directionToPlayer = Target.transform.position - referenceTransform.position;
+            IsDetecting = IsInRange();
+        }
     }
 
 

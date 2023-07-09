@@ -12,9 +12,11 @@ public class Ears : Sense
     // Update is called once per frame
     void Update()
     {
-        SetTarget();
-        directionToPlayer = Target.transform.position - transform.position;
-        IsDetecting = IsInRange() && Target.GetComponent<Audible>() != null;
+        if (SetTarget())
+        {
+            directionToPlayer = Target.transform.position - transform.position;
+            IsDetecting = IsInRange() && Target.GetComponent<Audible>() != null;
+        }
     }
 
     private void OnDrawGizmos()

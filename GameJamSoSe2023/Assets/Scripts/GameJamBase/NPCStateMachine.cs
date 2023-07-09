@@ -13,7 +13,7 @@ public class NPCStateMachine : BaseStateMachine
     private Animator anim;
     public DemonSpawner demonSpawner;
 
-    private Eyes eyes;
+    public Eyes eyes;
     private Ears ears;
     private NavMeshAgent agent;
 
