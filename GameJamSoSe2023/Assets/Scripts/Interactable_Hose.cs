@@ -1,4 +1,5 @@
 using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,12 @@ public class Interactable_Hose : Interactable
     private SimplePlayerController spc;
     public float knockBackStrength = 2;
     private Rigidbody rb;
+    public float maxHosePressure = 100;
+    private float hosePressure = 100;
+    public float hoseCost = 10;
+    public MMProgressBar waterBar;
+
+
 
     private void Start()
     {
@@ -58,11 +65,16 @@ public class Interactable_Hose : Interactable
 
     public override void Use(InteractionManager interactor)
     {
+        if(HosePressure <= 0)
+        {
+            return;
+        }
         CancelInvoke();
         if(!feedback.IsPlaying)
         {
             feedback?.PlayFeedbacks();
         }
+        HosePressure -= Time.deltaTime * hoseCost;
         PushBackTheUser();
         Invoke("StopFeedback",0.1f);
     }
@@ -79,5 +91,12 @@ public class Interactable_Hose : Interactable
         Vector3 rndSphere = Random.onUnitSphere;
         rndSphere.y = 0;
         spc.knockBackRotation = rndSphere;
+    }
+
+    public float HosePressure { get => hosePressure; set 
+        {
+            waterBar.UpdateBar01(hosePressure / 100);
+            hosePressure = value; 
+        } 
     }
 }
