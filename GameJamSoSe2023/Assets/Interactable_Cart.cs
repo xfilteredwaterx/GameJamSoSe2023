@@ -7,20 +7,14 @@ public class Interactable_Cart : Interactable
 
     // Defines how fast the GO can turn
     public float turnSpeed = 90;
-
     public Transform driverPosition;
-    private Rigidbody rb;
+    public Rigidbody rb;
     public float force = 30;
     private ControllScheme spc;
 
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
     public override void AlternateInteract(InteractionManager interactor)
     {
-        transform.parent = null;
         currentInteractor.isInteracting = false;
         currentInteractor.GetComponent<CharacterController>().center = new Vector3(0, 0.5f, 0);
         currentInteractor = null;
@@ -60,14 +54,14 @@ public class Interactable_Cart : Interactable
         float verticalInput = spc.Vertical();
 
         // Translate along z-axis
-        rb.velocity = (-transform.forward * verticalInput * force );
+        rb.velocity = (transform.forward * verticalInput * force );
 
         // Are we moving
         if (verticalInput != 0)
         {
             // calculate the angle around y-axis
             float turnAngle = turnSpeed * horizontalInput * verticalInput * Time.deltaTime;
-            transform.Rotate(Vector3.up, turnAngle);
+            rb.transform.Rotate(Vector3.up, turnAngle);
         }
     }
 }
