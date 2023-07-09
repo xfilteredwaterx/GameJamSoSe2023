@@ -1,7 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum NPCState { Idle, Flee }
+public enum NPCState { Idle, Flee, Knockback}
 
 public class NPC : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class NPC : MonoBehaviour
 
     // Reference to the player
     private Transform player;
+
 
     // Animation
     private Animator animator;
@@ -79,4 +81,7 @@ public class NPC : MonoBehaviour
         animator.SetFloat(speedParameterHash, agent.velocity.magnitude);
         agent.destination = (transform.position - player.position).normalized * runAwayDistance;
     }
+
+
+
 }

@@ -8,7 +8,7 @@ public class NPCStateMachine : BaseStateMachine
     public NPCIdleState IdleState;
     public NPCChaseState ChaseState;
     public NPCPatrolState PatrolState;
-
+    public NPCKnockBackState KnockBackState;
     private float initalAgentSpeed;
     private Animator anim;
 
@@ -40,6 +40,17 @@ public class NPCStateMachine : BaseStateMachine
     public override void Tick()
     {
         anim.SetFloat("speed", agent.velocity.magnitude);
+    }
+
+
+    /// <summary>
+    /// KnockBackState
+    /// </summary>
+    public void ApplyKnockback(Vector3 normalized, float v)
+    {
+        KnockBackState.knockBackDirection = normalized;
+        KnockBackState.knockbackTime = v;
+        CurrentState = KnockBackState;
     }
 
     public Vector3 PlayerPosition { get => eyes.Target.transform.position; }

@@ -17,5 +17,9 @@ public class DamageTrigger : MonoBehaviour
         {
             other.GetComponent<Destuctible>().Hp -= 1;
         }
+        if(other.GetComponent<NPC>() != null)
+        {
+            other.GetComponent<NPCStateMachine>().ApplyKnockback((transform.position - other.transform.position).normalized, 0.7f);
+        }
     }
 }
