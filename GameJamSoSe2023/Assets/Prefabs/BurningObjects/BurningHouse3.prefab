@@ -836,7 +836,7 @@ GameObject:
   - component: {fileID: 658373949352590286}
   - component: {fileID: 658373949352590280}
   m_Layer: 0
-  m_Name: Burning House 3
+  m_Name: BurningHouse3
   m_TagString: Burning
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
