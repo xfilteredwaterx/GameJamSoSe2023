@@ -100,6 +100,7 @@ public class Interactable_Hose : Interactable
                 if (value > hosePressure)
                 {
                     waterBar.SetBar01(hosePressure / 100);
+                    GameObject.Find("BgWhite").GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                 }
                 else
                 {
@@ -113,6 +114,7 @@ public class Interactable_Hose : Interactable
             {
                 hosePressure = maxHosePressure;
                 waterBar.SetBar01(hosePressure / 100);
+                GameObject.Find("BgWhite").GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
             }
 
         } 
