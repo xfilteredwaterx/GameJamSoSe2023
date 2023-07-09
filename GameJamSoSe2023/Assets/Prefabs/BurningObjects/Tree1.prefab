@@ -873,7 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f8009ed57eef544a0f26a0b82ad115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 30
   endFeedback: {fileID: 658373948198938729}
   damageFeedback: {fileID: 658373948571459524}
   fire: {fileID: 5185924691892436334}
@@ -995,17 +995,17 @@ PrefabInstance:
     - target: {fileID: 5682162404558410460, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.99
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410460, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.92
+      value: 3.34
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410460, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.76
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410460, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
@@ -1055,22 +1055,32 @@ PrefabInstance:
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: ShapeModule.type
-      value: 5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
+        type: 3}
+      propertyPath: ShapeModule.arc.value
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 21.21
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 8.399041
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: ShapeModule.m_Scale.z
-      value: 7.295439
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 2.59
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
@@ -1095,7 +1105,7 @@ PrefabInstance:
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 600
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
@@ -1116,6 +1126,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410462, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}

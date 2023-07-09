@@ -849,7 +849,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658373949352590287}
-  m_LocalRotation: {x: 1.9724292e-17, y: -0.7106426, z: 1.9527526e-17, w: 0.70355326}
+  m_LocalRotation: {x: 0, y: -0.71063983, z: 0, w: 0.703556}
   m_LocalPosition: {x: -29.6, y: 0.049999952, z: 7.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -873,7 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f8009ed57eef544a0f26a0b82ad115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 30
   endFeedback: {fileID: 658373948198938729}
   damageFeedback: {fileID: 658373948571459524}
   fire: {fileID: 5185924691892436334}
@@ -905,17 +905,17 @@ PrefabInstance:
     - target: {fileID: 5682162404558410460, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.99
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410460, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.92
+      value: 1.53
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410460, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.76
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410460, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
@@ -965,22 +965,32 @@ PrefabInstance:
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: ShapeModule.type
-      value: 5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
+        type: 3}
+      propertyPath: ShapeModule.arc.value
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 21.21
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 8.399041
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: ShapeModule.m_Scale.z
-      value: 7.295439
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 1.65
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
@@ -1005,7 +1015,7 @@ PrefabInstance:
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 600
+      value: 111
       objectReference: {fileID: 0}
     - target: {fileID: 5682162404558410461, guid: 91b8f4d79b0efac42936640868c0a8be,
         type: 3}

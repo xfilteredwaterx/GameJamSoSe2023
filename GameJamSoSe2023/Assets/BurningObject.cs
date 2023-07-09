@@ -22,6 +22,7 @@ public class BurningObject : MonoBehaviour
             {
                 print("Test");
                 endFeedback.PlayFeedbacks();
+                fire.Stop();
             }
 
         } 
