@@ -206,9 +206,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6434260736216349332}
-  m_LocalRotation: {x: -0, y: -0, z: 2.7755572e-17, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.1500015, y: 4.1799984, z: 23.78}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.60225, y: 0.60225, z: 0.60225}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6434260735785863814}
@@ -233,6 +233,7 @@ MonoBehaviour:
   hp: 100
   endFeedback: {fileID: 6434260737134684466}
   damageFeedback: {fileID: 6434260737569988255}
+  fire: {fileID: 1697873093551193141}
 --- !u!65 &6434260736216349331
 BoxCollider:
   m_ObjectHideFlags: 0
