@@ -8,6 +8,11 @@ public class BurningObject : MonoBehaviour
     [SerializeField] private int hp = 100;
     public MMF_Player endFeedback;
     public MMF_Player damageFeedback;
+    public ParticleSystem fire;
+    private void Start()
+    {
+        fire.Play();
+    }
     public int Hp { get => hp;
         set 
         {

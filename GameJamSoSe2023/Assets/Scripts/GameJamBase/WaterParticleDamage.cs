@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MoreMountains.Feedbacks;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class WaterParticleDamage : MonoBehaviour
 {
     public ParticleSystem part;
     public List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
-
+    public MMF_Player feedbackText;
     public int damagePerParticle = 2;
 
 
