@@ -23,6 +23,7 @@ public class DamageTrigger : MonoBehaviour
         {
             print(other.gameObject.name);
             other.GetComponent<NPCStateMachine>().ApplyKnockback((soruce.forward).normalized, 0.2f);
+            other.GetComponent<BurningObject>().Hp -= 25;
         }
     }
 }

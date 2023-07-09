@@ -45,7 +45,7 @@ public class Interactable_Pump : Interactable
     {
         if(spc.UseButtonDown() && timer < Time.time)
         {
-            hoseEnd.HosePressure += 5;
+            hoseEnd.HosePressure += 17;
             timer = Time.time + cooldown;
         }
 

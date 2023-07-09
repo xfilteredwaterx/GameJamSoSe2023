@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Interactable_Axe : Interactable
 {
+    public Transform hoseOrigin;
     private Rigidbody rb;
     private InteractionManager lastUser;
     private void Start()
@@ -44,5 +45,23 @@ public class Interactable_Axe : Interactable
     private void SetAnimationBack()
     {
         lastUser.GetComponent<SimplePlayerController>().anim.SetBool("isAttacking", false);
+    }
+
+    private void Update()
+    {
+        if (Vector3.Distance(hoseOrigin.position, transform.position) > 10 && currentInteractor == null)
+        {
+            Vector3 movementDirection = (hoseOrigin.position - transform.position).normalized;
+            movementDirection.y = 0;
+            if (transform.position.y < -5) // Make sure you cant lose the hose cuz it glitches out
+            {
+                transform.position = new Vector3(transform.position.x, 5, transform.position.z);
+            }
+            rb.velocity = movementDirection * 10;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
 }
