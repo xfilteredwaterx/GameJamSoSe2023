@@ -49,15 +49,5 @@ public class Eyes : Sense
          
     }
 
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        directionToPlayer = GameObject.Find("Player").transform.position - referenceTransform.position;
-        SenseGizmos.DrawRangeCircle(referenceTransform.position, transform.up, range);
-        SenseGizmos.DrawFOV(referenceTransform.position, referenceTransform.forward, transform.up, range, fov);
-        if(IsInRange())
-            SenseGizmos.DrawRay(referenceTransform.position, Target.transform.position, HasLoS());
-    }
-#endif
 }
 
