@@ -11,6 +11,7 @@ public class Interactable_Cart : Interactable
     public Transform driverPosition;
     private Rigidbody rb;
     public float force = 30;
+    private ControllScheme spc;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class Interactable_Cart : Interactable
         }
         currentInteractor = interactor;
         currentInteractor.isInteracting = true;
+        spc = currentInteractor.GetComponent<SimplePlayerController>().controllScheme;
         interactor.transform.parent = driverPosition;
         interactor.transform.rotation = driverPosition.transform.rotation;
         interactor.transform.position = driverPosition.position;
@@ -54,8 +56,8 @@ public class Interactable_Cart : Interactable
         if (currentInteractor == null)
             return;
         // Stores inputs
-        float horizontalInput = Input.GetAxis("Horizontal1");
-        float verticalInput = Input.GetAxis("Vertical1");
+        float horizontalInput = spc.Horizontal();
+        float verticalInput = spc.Vertical();
 
         // Translate along z-axis
         rb.velocity = (-transform.forward * verticalInput * force );

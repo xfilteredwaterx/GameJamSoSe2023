@@ -10,7 +10,7 @@ public class SimplePlayerController : MonoBehaviour
 
     // how fast the character can turn
     public float rotationSpeed;
-
+    public LayerMask layerMask;
     // How far in m the distance check work
     public float groundCheckDistance = 0.1f;
 
@@ -144,7 +144,7 @@ public class SimplePlayerController : MonoBehaviour
     /// <returns>True if the raycasts hit smthg. in distance</returns>
     private bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, characterController.height * 0.5f + groundCheckDistance);
+        return Physics.Raycast(transform.position, Vector3.down, characterController.height * 0.5f + groundCheckDistance, layerMask);
     }
 
     /// <summary>

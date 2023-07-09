@@ -19,7 +19,6 @@ public class NPCChaseState : BaseState
 
     public override void OnUpdateState(BaseStateMachine bsm)
     {
-        Debug.Log(Vector3.Distance(bsm.transform.position, ((NPCStateMachine)bsm).PlayerPosition));
         if(Vector3.Distance(bsm.transform.position, ((NPCStateMachine)bsm).PlayerPosition) > DistanceToFlee)
         {
             bsm.SwitchToState(((NPCStateMachine)bsm).ChaseState);

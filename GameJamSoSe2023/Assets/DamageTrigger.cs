@@ -15,8 +15,7 @@ public class DamageTrigger : MonoBehaviour
     {
         if(other.tag.Equals("Enemy"))
         {
-            other.GetComponent<Animator>()?.SetTrigger("hit");
-            other.transform.Find("Feedback_Damage").GetComponent<MMF_Player>().PlayFeedbacks();
+            other.GetComponent<Destuctible>().Hp -= 1;
         }
     }
 }

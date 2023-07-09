@@ -447,6 +447,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMovementSpeed: 10
   rotationSpeed: 360
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
   groundCheckDistance: 0.1
   gravityMultiplier: 0.6
   characterController: {fileID: 5444297569421474454}
@@ -461,6 +464,8 @@ MonoBehaviour:
   walkFeedback: {fileID: 0}
   jumpFeedback: {fileID: 5444297569940832857}
   anim: {fileID: 0}
+  knockBack: {x: 0, y: 0, z: 0}
+  knockBackRotation: {x: 0, y: 0, z: 0}
 --- !u!143 &5444297569421474454
 CharacterController:
   m_ObjectHideFlags: 0
