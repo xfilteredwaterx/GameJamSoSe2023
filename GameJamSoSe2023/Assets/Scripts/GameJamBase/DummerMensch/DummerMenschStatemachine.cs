@@ -35,10 +35,10 @@ public class DummerMenschStatemachine : BaseStateMachine
     public Vector3 Randomposition()
     {
         float x = Random.Range(-7, 7);
-        float y = Random.Range(-7, 7);
+        //float y = 0;
         float z = Random.Range(-7, 7);
 
-        Vector3 direction= new Vector3(x, y, z);
+        Vector3 direction= new Vector3(x, 0, z);
 
         return transform.position + direction;
     }
