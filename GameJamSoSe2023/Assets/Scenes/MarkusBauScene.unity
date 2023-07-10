@@ -6301,6 +6301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStateName: 
+  agent: {fileID: 0}
+  speed: 0
 --- !u!195 &3199341108448864922
 NavMeshAgent:
   m_ObjectHideFlags: 0
