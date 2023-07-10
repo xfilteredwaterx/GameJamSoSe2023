@@ -5382,6 +5382,7 @@ GameObject:
   - component: {fileID: 2336128370200400791}
   - component: {fileID: 2336128370200400784}
   - component: {fileID: 2336128370200400790}
+  - component: {fileID: 529481338}
   m_Layer: 0
   m_Name: Destructible 1
   m_TagString: Enemy
@@ -5398,7 +5399,7 @@ Transform:
   m_GameObject: {fileID: 2336128370200400785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.68, y: 0.03, z: 19.49}
-  m_LocalScale: {x: 1.8662, y: 1.8662, z: 1.8662}
+  m_LocalScale: {x: 1.8662001, y: 1.8662, z: 1.8662001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2336128371432506623}
@@ -5437,6 +5438,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.4095297, y: 1.2, z: 2.0399044}
   m_Center: {x: 0.3090238, y: 0.59000003, z: -0.15692854}
+--- !u!114 &529481338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336128370200400785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50656d98e430fb04c9e6c0a3241e01d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2336128370653966353
 GameObject:
   m_ObjectHideFlags: 0
@@ -5801,6 +5814,18 @@ MonoBehaviour:
             - m_Target: {fileID: 7518220462818027157}
               m_TargetAssemblyTypeName: BarricadeExplosionController, Assembly-CSharp
               m_MethodName: triggerExplosion
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+            - m_Target: {fileID: 529481338}
+              m_TargetAssemblyTypeName: StartTimer, Assembly-CSharp
+              m_MethodName: StartEvent
               m_Mode: 1
               m_Arguments:
                 m_ObjectArgument: {fileID: 0}

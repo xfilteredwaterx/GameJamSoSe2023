@@ -16,7 +16,7 @@ public class StartTimer : MonoBehaviour
         
     }
 
-    private void OnDisable()
+    public void StartEvent()
     {
         GameManager.instance.hasStarted = true;
     }
