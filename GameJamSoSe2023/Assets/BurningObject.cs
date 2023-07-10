@@ -31,7 +31,15 @@ public class BurningObject : MonoBehaviour
                 print("Test");
                 endFeedback.PlayFeedbacks();
                 fire.Stop();
-                GameManager.instance.Score += maxHP;
+                if(isEnemy)
+                {
+                    GameManager.instance.Score += maxHP * 3;
+                }
+                else
+                {
+                    GameManager.instance.Score += maxHP;
+                }
+
             }
             hp = value;
 

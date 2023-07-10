@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,6 +14,8 @@ public class GameManager : MonoBehaviour
     public Image timeImg;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
+    public MMF_Player scoreFeedback;
+    public MMF_Player timerFeedback;
     public bool hasStarted = false;
     private int gameTimeInt = 1000000;
 
@@ -43,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     public int Score { get => score; set
         {
+            scoreFeedback.PlayFeedbacks();
             scoreText.text = ""+value;
             score = value;
         }
@@ -51,13 +55,16 @@ public class GameManager : MonoBehaviour
     {
         get => gameTimer; set
         {
-            if(value < gameTimeInt)
+            print((int)Mathf.Ceil(value));
+            if ((int)Mathf.Ceil(value) != gameTimeInt)
             {
+                timerFeedback.PlayFeedbacks();
                 gameTimeInt = (int)Mathf.Ceil(value);
                 timerText.text = "" + gameTimeInt;
                 timeImg.fillAmount = gameTimer / maxGameTime;
-                gameTimer = value;
+
             }
+            gameTimer = value;
 
 
         }
