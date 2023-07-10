@@ -1,3 +1,4 @@
+using CarterGames.Assets.AudioManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,8 +39,10 @@ public class Interactable_Axe : Interactable
         print("test");
         CancelInvoke();
         lastUser = interactor;
+        
         interactor.GetComponent<SimplePlayerController>().anim.SetBool("isAttacking", true);
         Invoke("SetAnimationBack", 0.1f);
+
     }
 
     private void SetAnimationBack()
